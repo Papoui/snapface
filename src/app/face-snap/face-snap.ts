@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-face-snap',
@@ -13,6 +14,7 @@ export class FaceSnap {
   createdAt!: string;
   snaps!: number;
   imageUrl!: String;
+  userSnapped!: boolean;
 
   ngOnInit(): void {
     this.title = 'Archibald';
@@ -20,10 +22,13 @@ export class FaceSnap {
     const date = new Date();
     this.createdAt = date.getDay()+"/"+date.getMonth()+"/"+date.getFullYear()+" à "+date.getHours()+":"+date.getMinutes();
     this.snaps = 5;
+    this.userSnapped = false;
     this.imageUrl = "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg";
 
   }
-  onAddSnap(){
-    this.snaps++;
+  onSnap(){
+  this.userSnapped
+    ?(this.snaps--, this.userSnapped=false)
+    :(this.snaps++, this.userSnapped=true);
   }
 }
