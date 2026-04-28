@@ -1,10 +1,10 @@
-<div class="face-snap-card">
-<h2>{{title}}</h2>
-<img [src]="imageUrl" [alt]="title">
-<p>Mis en ligne le {{createdAt}}</p>
-<p>{{description}}</p>
-<p>
-    <button (click)="onSnap()">snap</button>
-    🤌 {{snaps}}
-</p>
+<div class = 'face-snap-card' [ngClass]="{snapped : userSnapped}">
+    <h2>{{title}}</h2>
+    <img [src]="imageUrl" [alt]="title">
+    <p>Mis en ligne le {{createdAt}}</p>
+    <p>{{description}}</p>
+    <p>
+        <button (click)="onSnap()">snap</button>
+        <span [ngStyle]="{ color: 'rgb(0, ' + snaps + ', 0)' }">🤌 {{snaps}}</span>
+    </p>
 </div>
