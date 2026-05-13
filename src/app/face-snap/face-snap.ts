@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgStyle, NgClass } from '@angular/common';
+import { FaceSnapM } from '../models/face-snap';
 
 @Component({
   selector: 'app-face-snap',
@@ -12,26 +13,16 @@ import { NgStyle, NgClass } from '@angular/common';
   standalone: true
 })
 export class FaceSnap {
-  title!: string;
-  description!: string;
-  createdAt!: string;
-  snaps!: number;
-  imageUrl!: String;
+
+  @Input() faceSnap!: FaceSnapM;
   userSnapped!: boolean;
 
   ngOnInit(): void {
-    this.title = 'Archibald';
-    this.description = 'Mon meilleur ami depuis toujours !';
-    const date = new Date();
-    this.createdAt = date.getDay()+"/"+date.getMonth()+"/"+date.getFullYear()+" à "+date.getHours()+":"+date.getMinutes();
-    this.snaps = 92;
     this.userSnapped = false;
-    this.imageUrl = "https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg";
-
   }
   onSnap(){
   this.userSnapped
-    ?(this.snaps--, this.userSnapped=false)
-    :(this.snaps++, this.userSnapped=true);
+    ?(this.faceSnap.snaps--, this.userSnapped=false)
+    :(this.faceSnap.snaps++, this.userSnapped=true);
   }
 }

@@ -1,5 +1,6 @@
-import { Component, signal } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FaceSnap } from './face-snap/face-snap';
+import { FaceSnapM } from './models/face-snap';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,16 @@ import { FaceSnap } from './face-snap/face-snap';
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
-export class App {
-  //protected readonly title = signal('ta mère');
+export class App implements OnInit{
+  mySnap!: FaceSnapM;
+
+  ngOnInit() {
+    this.mySnap = new FaceSnapM(
+      'Archibald',
+      'Mon meilleur ami depuis tout petit !',
+      'https://cdn.pixabay.com/photo/2015/05/31/16/03/teddy-bear-792273_1280.jpg',
+      new Date(),
+      0
+    );
+  }
 }
