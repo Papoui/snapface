@@ -1,4 +1,9 @@
-<div class = 'face-snap-card' [ngClass]="{snapped : userSnapped}">
+<!-- 
+    https://angular.fr/directives/ng-style -> https://angular.fr/components/style 
+    https://angular.fr/directives/ng-class -> https://angular.fr/components/class
+-->
+
+<div class = 'face-snap-card' [class.snapped]="userSnapped">
     <h2>{{faceSnap.title}}</h2>
     <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title">
     @if(faceSnap.location){
@@ -8,6 +13,6 @@
     <p>{{faceSnap.description}}</p>
     <p>
         <button (click)="onSnap()">snap</button>
-        <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap.snaps + ', 0)' }">🤌 {{faceSnap.snaps}}</span>
+        <span [style.color]="'rgb(0, ' + faceSnap.snaps + ', 0)'">🤌 {{faceSnap.snaps}}</span>
     </p>
 </div>
