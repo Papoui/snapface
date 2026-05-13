@@ -9,7 +9,7 @@
     @if(faceSnap.location){
         <p>Lieu : {{faceSnap.location}}</p>
     }
-    <p>Mis en ligne le {{faceSnap.createdAt}}</p>
+    <p>Mis en ligne le {{faceSnap.createdAt | date }}</p>
     <p>{{faceSnap.description}}</p>
     <p>
         <button (click)="onSnap()">snap</button>
