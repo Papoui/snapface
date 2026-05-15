@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
-import { NgStyle, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
+import { TitleCasePipe, DatePipe } from '@angular/common';
 import { FaceSnapM } from '../models/face-snap';
+import { FaceSnapsService } from '../services/face-snaps-service';
 
 @Component({
   selector: 'app-face-snap',
   imports: [
-    NgStyle,
-    NgClass,
     TitleCasePipe,
     DatePipe
   ],
@@ -18,13 +17,13 @@ export class FaceSnap {
 
   @Input() faceSnap!: FaceSnapM;
   userSnapped!: boolean;
+  constructor(private faceSnapsService : FaceSnapsService) {}
 
   ngOnInit(): void {
     this.userSnapped = false;
   }
   onSnap(){
-  this.userSnapped
-    ?(this.faceSnap.snaps--, this.userSnapped=false)
-    :(this.faceSnap.snaps++, this.userSnapped=true);
+    this.faceSnapsService.snapFaceById(this.faceSnap.id, this.userSnapped ? 'unsnap' : 'snap');
+    this.userSnapped = !this.userSnapped;
   }
 }
