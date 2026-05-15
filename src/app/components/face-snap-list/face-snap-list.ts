@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FaceSnapM } from '../models/face-snap';
+import { FaceSnapM } from '../../models/face-snap';
 import { FaceSnap } from '../face-snap/face-snap';
-import { FaceSnapsService } from '../services/face-snaps-service';
+import { FaceSnapsService } from '../../services/face-snaps-service';
 
 @Component({
   selector: 'app-face-snap-list',
